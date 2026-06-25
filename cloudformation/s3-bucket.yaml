@@ -14,7 +14,7 @@ Resources:
   MyS3Bucket:
     Type: AWS::S3::Bucket 
     Properties:
-      BucketName: 'Somebucketnamenow'
+      BucketName: 'somebucketnamenow'
       Tags:
         - Key: Environment
           Value: 'dev'
