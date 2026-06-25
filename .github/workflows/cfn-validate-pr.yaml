@@ -2,6 +2,8 @@ name: Validate Cloudformation on PR
 
 on:
   pull_request:
+    type:
+      - closed
     paths:
       - 'cloudformation/**'
 
@@ -44,11 +46,7 @@ jobs:
             })
 
 
-on:
-  pull_request:
-    type:
-      - closed
-jobs:
+
   cleanup-on-merge:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
