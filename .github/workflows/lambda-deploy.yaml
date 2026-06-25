@@ -11,6 +11,7 @@ jobs:
   deploy-lambda:  # Name of the job
     runs-on: ubuntu-latest   # Sets or specifies the runner
     steps:
+      - name: use the code
       - uses: actions/checkout@v2
 
       - name: Set up Python   # Sets up Python environment
@@ -27,7 +28,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-access-secret-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
       - name: Deplou Lambda Function #Zips Lambda directory and update lambda function
