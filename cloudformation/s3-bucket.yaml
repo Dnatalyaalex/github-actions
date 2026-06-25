@@ -15,9 +15,9 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: !Sub '${AWS::StackName}-${Environment}-bucket'
-    Tags:
-      - Key: Env
-        Value: !Ref Environment
+      Tags:
+        - Key: Env
+          Value: !Ref Environment
 
 Outputs:
   BucketName:
