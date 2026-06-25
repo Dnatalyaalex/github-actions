@@ -5,17 +5,16 @@ on:
     branches:
       - main
     paths:
-      - 'lambda/'
+      - 'lambda/**'
 
 jobs:
   deploy-lambda:  # Name of the job
     runs-on: ubuntu-latest   # Sets or specifies the runner
     steps:
-      - name: Using the code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python   # Sets up Python environment
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -25,7 +24,7 @@ jobs:
           pip install -r lambda/requirements.txt -t lambda/
 
       - name: Configure AWS creds #Sets up AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -35,5 +34,5 @@ jobs:
         run: |
           cd lambda
           zip -r lambda.zip .
-          aws lambda update-function-code --function-name my-test-cicd-lambda --zip-file file://zip
+          aws lambda update-function-code --function-name my-test-cicd-lambda --zip-file fileb://lambda.zip
 
