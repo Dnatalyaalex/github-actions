@@ -2,6 +2,8 @@ name: Validate Cloudformation on PR
 
 on:
   pull_request:
+    type:
+      - closed
     paths:
       - 'cloudformation/**'
 
@@ -13,10 +15,10 @@ jobs:
   validate-cfn:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -44,14 +46,15 @@ jobs:
             })
 
 
+
   cleanup-on-merge:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
       - name: configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v1
         with: 
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
