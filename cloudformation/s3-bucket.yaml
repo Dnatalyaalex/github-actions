@@ -11,15 +11,12 @@ Parameters:
       - production
 
 Resources:
-  MyS3Bucket:
-    Type: 'AWS::S3::Bucket'
-    Properties: 
-      BucketName: Dib-buck-test1  #!Sub "${AWS::StackName}-${Environment}-bucket"
-      Tags:
-        - Key: Environment
-          Value: !Ref Environment
-        - Key: Project
-          Value: GithubActionsTesting!
+  Type: AWS::S3::Bucket 
+  Properties:
+    BucketName: 'Somebucketnamenow'
+    Tags:
+      - Key: Environment
+        Value: 'dev'
 
   Outputs:
     BucketName:
