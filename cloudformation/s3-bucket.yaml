@@ -11,12 +11,13 @@ Parameters:
       - production
 
 Resources:
-  Type: AWS::S3::Bucket 
-  Properties:
-    BucketName: 'Somebucketnamenow'
-    Tags:
-      - Key: Environment
-        Value: 'dev'
+  MyS3Bucket:
+    Type: AWS::S3::Bucket 
+    Properties:
+      BucketName: 'Somebucketnamenow'
+      Tags:
+        - Key: Environment
+          Value: 'dev'
 
   Outputs:
     BucketName:
