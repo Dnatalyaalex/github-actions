@@ -11,13 +11,10 @@ Parameters:
       - production
 
 Resources:
-  MyS3Bucket:
-    Type: AWS::S3::Bucket 
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: 'somebucketnamenow'
-      Tags:
-        - Key: Environment
-          Value: 'dev'
+      BucketName: DOC-EXAMPLE-BUCKET-DIBROVA
 
   Outputs:
     BucketName:
